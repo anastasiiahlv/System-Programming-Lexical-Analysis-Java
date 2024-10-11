@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colored Java code</title>
+</head>
+<style>
+html {
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 100%;
+}
+
+span {
+    white-space: pre-wrap;
+}
+</style>
+<body bgcolor="#282923">
+<span style='color:#7A7E85;'>// Абстрактний клас для працівників</span><span style='color:#BCBEC4;'>
+</span><span style='color:#B3AE60;'>abstract</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>class</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#B3AE60;'>private</span><span style='color:#BCBEC4;'> </span><span style='color:#CF8E6D;'>String</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>;</span><span style='color:#BCBEC4;'>
+
+    </span><span style='color:#B3AE60;'>public</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>Employee</span><span style='color:#BCBEC4;'>(</span><span style='color:#CF8E6D;'>String</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>)</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#B3AE60;'>this</span><span style='color:#BCBEC4;'>.</span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>=</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>;</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+    </span><span style='color:#B3AE60;'>public</span><span style='color:#BCBEC4;'> </span><span style='color:#CF8E6D;'>String</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>getName</span><span style='color:#BCBEC4;'>()</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#B3AE60;'>return</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>;</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+    </span><span style='color:#B3AE60;'>abstract</span><span style='color:#BCBEC4;'> </span><span style='color:#CF8E6D;'>void</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>work</span><span style='color:#BCBEC4;'>();</span><span style='color:#BCBEC4;'>
+</span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+</span><span style='color:#7A7E85;'>// Підклас для менеджера</span><span style='color:#BCBEC4;'>
+</span><span style='color:#B3AE60;'>class</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>Manager</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>extends</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#B3AE60;'>public</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>Manager</span><span style='color:#BCBEC4;'>(</span><span style='color:#CF8E6D;'>String</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>)</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#B3AE60;'>super</span><span style='color:#BCBEC4;'>(</span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+    </span><span style='color:#FA6675;'>@</span><span style='color:#BCBEC4;'>Override</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#CF8E6D;'>void</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>work</span><span style='color:#BCBEC4;'>()</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#BCBEC4;'>System</span><span style='color:#BCBEC4;'>.</span><span style='color:#C77DBB;'>out</span><span style='color:#BCBEC4;'>.</span><span style='color:#56A8F5;'>println</span><span style='color:#BCBEC4;'>(</span><span style='color:#56A8F5;'>getName</span><span style='color:#BCBEC4;'>()</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>+</span><span style='color:#BCBEC4;'> </span><span style='color:#6AAB73;'>" is managing the team."</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+</span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+</span><span style='color:#7A7E85;'>// Підклас для розробника</span><span style='color:#BCBEC4;'>
+</span><span style='color:#B3AE60;'>class</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>Developer</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>extends</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#B3AE60;'>public</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>Developer</span><span style='color:#BCBEC4;'>(</span><span style='color:#CF8E6D;'>String</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>)</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#B3AE60;'>super</span><span style='color:#BCBEC4;'>(</span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+    </span><span style='color:#FA6675;'>@</span><span style='color:#BCBEC4;'>Override</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#CF8E6D;'>void</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>work</span><span style='color:#BCBEC4;'>()</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#BCBEC4;'>System</span><span style='color:#BCBEC4;'>.</span><span style='color:#C77DBB;'>out</span><span style='color:#BCBEC4;'>.</span><span style='color:#56A8F5;'>println</span><span style='color:#BCBEC4;'>(</span><span style='color:#56A8F5;'>getName</span><span style='color:#BCBEC4;'>()</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>+</span><span style='color:#BCBEC4;'> </span><span style='color:#6AAB73;'>" is writing code."</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+</span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+</span><span style='color:#7A7E85;'>// Підклас для дизайнера</span><span style='color:#BCBEC4;'>
+</span><span style='color:#B3AE60;'>class</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>Designer</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>extends</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#B3AE60;'>public</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>Designer</span><span style='color:#BCBEC4;'>(</span><span style='color:#CF8E6D;'>String</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>)</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#B3AE60;'>super</span><span style='color:#BCBEC4;'>(</span><span style='color:#BCBEC4;'>name</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+    </span><span style='color:#FA6675;'>@</span><span style='color:#BCBEC4;'>Override</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#CF8E6D;'>void</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>work</span><span style='color:#BCBEC4;'>()</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#BCBEC4;'>System</span><span style='color:#BCBEC4;'>.</span><span style='color:#C77DBB;'>out</span><span style='color:#BCBEC4;'>.</span><span style='color:#56A8F5;'>println</span><span style='color:#BCBEC4;'>(</span><span style='color:#56A8F5;'>getName</span><span style='color:#BCBEC4;'>()</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>+</span><span style='color:#BCBEC4;'> </span><span style='color:#6AAB73;'>" is designing the UI."</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+</span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+
+</span><span style='color:#7A7E85;'>// Клас для тестування</span><span style='color:#BCBEC4;'>
+</span><span style='color:#B3AE60;'>public</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>class</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>EmployeeTest</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#B3AE60;'>public</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>static</span><span style='color:#BCBEC4;'> </span><span style='color:#CF8E6D;'>void</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>main</span><span style='color:#BCBEC4;'>(</span><span style='color:#CF8E6D;'>String</span><span style='color:#BCBEC4;'>[]</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>args</span><span style='color:#BCBEC4;'>)</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>manager</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>=</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>new</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>Manager</span><span style='color:#BCBEC4;'>(</span><span style='color:#6AAB73;'>"Alice"</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>developer</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>=</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>new</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>Developer</span><span style='color:#BCBEC4;'>(</span><span style='color:#6AAB73;'>"Bob"</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>designer</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>=</span><span style='color:#BCBEC4;'> </span><span style='color:#B3AE60;'>new</span><span style='color:#BCBEC4;'> </span><span style='color:#56A8F5;'>Designer</span><span style='color:#BCBEC4;'>(</span><span style='color:#6AAB73;'>"Charlie"</span><span style='color:#BCBEC4;'>);</span><span style='color:#BCBEC4;'>
+
+        </span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'>[]</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>employees</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>=</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>manager</span><span style='color:#BCBEC4;'>,</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>developer</span><span style='color:#BCBEC4;'>,</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>designer</span><span style='color:#BCBEC4;'>};</span><span style='color:#BCBEC4;'>
+
+        </span><span style='color:#B3AE60;'>for</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>(</span><span style='color:#BCBEC4;'>Employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>employee</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>:</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>employees</span><span style='color:#BCBEC4;'>)</span><span style='color:#BCBEC4;'> </span><span style='color:#BCBEC4;'>{</span><span style='color:#BCBEC4;'>
+            </span><span style='color:#BCBEC4;'>employee</span><span style='color:#BCBEC4;'>.</span><span style='color:#56A8F5;'>work</span><span style='color:#BCBEC4;'>();</span><span style='color:#BCBEC4;'>
+        </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+    </span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+</span><span style='color:#BCBEC4;'>}</span><span style='color:#BCBEC4;'>
+</span></body>
+</html>

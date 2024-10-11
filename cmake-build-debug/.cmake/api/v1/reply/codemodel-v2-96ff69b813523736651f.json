@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Lab3_Java_Lexical_Analysis",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Lab3_Java_Lexical_Analysis::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Lab3_Java_Lexical_Analysis-Debug-0c8de47d4671e617b3ce.json",
+					"name" : "Lab3_Java_Lexical_Analysis",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/USER/Desktop/univ/\u0441\u0438\u0441\u0442\u0435\u043c\u043d\u0435 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0443\u0432\u0430\u043d\u043d\u044f/Lab3-Java-Lexical-Analysis/cmake-build-debug",
+		"source" : "C:/Users/USER/Desktop/univ/\u0441\u0438\u0441\u0442\u0435\u043c\u043d\u0435 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0443\u0432\u0430\u043d\u043d\u044f/Lab3-Java-Lexical-Analysis"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

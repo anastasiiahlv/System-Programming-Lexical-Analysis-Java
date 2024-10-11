@@ -1,0 +1,65 @@
+package com.example;
+import java.util.Scanner;
+
+/*
+Multiline
+comment
+*/
+
+// Single line comment
+
+class Main {
+    public static void main(String[] args) {
+        // Десяткові числа
+        int intNum = 40 + 70;
+        byte byteNum = 1;
+        short myNum = -10;
+        long longNum = 123456789L;
+
+         // Числа з плаваючою крапкою
+        float floatNum = 3.14f;
+        double doubleNum = 2.718281828459045d;
+
+         // Шістнадцяткові числа
+        int hexNum = 0x1A;
+
+         // Двійкові числа
+        int binaryNum = 0b1101;
+
+        // Вісімкові числа
+        int octalNumber = 010;
+
+         // Рядкові константи
+         String greeting = "Hello, World!";
+         String sentence = "Це рядок";
+
+         // Символьні константи
+         char letter = 'A';
+         char digit = '5';
+
+         // Логічний тип
+         boolean t = true;
+         boolean f = false;
+
+         // Масив
+         String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+
+         // switch
+         int day = 4;
+         switch (day) {
+              case 6:
+                    System.out.println("Today is Saturday");
+                    break;
+              case 7:
+                     System.out.println("Today is Sunday");
+                     break;
+              default:
+                     System.out.println("Looking forward to the Weekend");
+              }
+
+         // for loop
+         for (int i = 0; i < 5; i++) {
+             System.out.println(i);
+         }
+    }
+}
