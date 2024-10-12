@@ -3,8 +3,9 @@
 #include <vector>
 #include <string>
 #include <regex>
+#include <unordered_set>
 #include <windows.h>
-#include "Regex.cpp"
+#include "Regex.h"
 
 using namespace std;
 
@@ -13,11 +14,13 @@ public:
     regex lexemeRegex;
     string hexColor;
     WORD ansiColor;
+    string lexemeType;
 
-    RegexAndColor(const string &regexTemplate, const string &hexColor, WORD ansiColor) {
+    RegexAndColor(const string &regexTemplate, const string &hexColor, WORD ansiColor, const string &type) {
         this->lexemeRegex = regex(regexTemplate);
         this->hexColor = hexColor;
         this->ansiColor = ansiColor;
+        this->lexemeType = type;
     }
 };
 
@@ -29,35 +32,34 @@ struct ColoredWord {
 
 vector<RegexAndColor> getRegex() {
     return vector<RegexAndColor> {
+        RegexAndColor(getString(), "#6AAB73", 2, "String"),
+        RegexAndColor(getChar(), "#6AAB73", 2, "Char"),
 
-            RegexAndColor(getString(), "#6AAB73", 2),
-            RegexAndColor(getChar(), "#6AAB73", 2),
+        RegexAndColor(getInt(), "#2AACB8", 11, "Numeric Literal"),
+        RegexAndColor(getFloat(), "#2AACB8", 11, "Numeric Literal"),
+        RegexAndColor(getHexNumbers(), "#2AACB8", 11, "Hexadecimal Literal"),
+        RegexAndColor(getBinaryNumbers(), "#2AACB8", 11, "Binary Literal"),
+        RegexAndColor(getOctalNumbers(), "#2AACB8", 11, "Octal Literal"),
 
-            RegexAndColor(getInt(), "#2AACB8", 11),
-            RegexAndColor(getFloat(), "#2AACB8", 11),
-            RegexAndColor(getHexNumbers(), "#2AACB8", 11),
-            RegexAndColor(getBinaryNumbers(), "#2AACB8", 11),
-            RegexAndColor(getOctalNumbers(), "#2AACB8", 11),
+        RegexAndColor(getMultilineComments(), "#7A7E85", 8, "Comment"),
+        RegexAndColor(getSingleLineComment(), "#7A7E85", 8, "Comment"),
 
-            RegexAndColor(getMultilineComments(), "#7A7E85", 8),
-            RegexAndColor(getSingleLineComment(), "#7A7E85", 8),
+        RegexAndColor(getTypeNames(), "#CF8E6D", 6, "Data Type"),
+        RegexAndColor(getReservedWords(), "#B3AE60", 14, "Keyword"),
+        RegexAndColor(getOperators(), "#BCBEC4", 15, "Operator"),
 
-            RegexAndColor(getTypeNames(), "#CF8E6D", 6),
-            RegexAndColor(getReservedWords(), "#B3AE60", 14),
+        RegexAndColor(getMain(), "#56A8F5", 3, "Main Function"),
+        RegexAndColor(getFunctionDefinition(), "#56A8F5", 3, "Function Definition"),
+        RegexAndColor(getSystemIO(), "#C77DBB", 5, "System I/O"),
 
-            RegexAndColor(getOperators(), "#BCBEC4", 15),
+        RegexAndColor(getBoolean(), "#B3AE60", 14, "Boolean"),
 
-            RegexAndColor(getMain(), "#56A8F5", 3),
-            RegexAndColor(getFunctionDefinition(), "#56A8F5", 3),
-            RegexAndColor(getSystemIO(), "#C77DBB", 5),
+        RegexAndColor(getDelimiters(), "#BCBEC4", 15, "Punctuation"),
+        RegexAndColor(getLinesAndSpaces(), "#BCBEC4", 15, "Whitespace"),
+        RegexAndColor(getVariable(), "#BCBEC4", 15, "Identifier"),
+        RegexAndColor(getDirectives(), "#CF8E6D", 6, "Directive"),
 
-            RegexAndColor(getBoolean(), "#B3AE60", 14),
-
-            RegexAndColor(getDelimiters(), "#BCBEC4", 15),
-            RegexAndColor(getLinesAndSpaces(), "#BCBEC4", 15),
-            RegexAndColor(getVariable(), "#BCBEC4", 15),
-            RegexAndColor(getDirectives(), "#CF8E6D", 6),
-            RegexAndColor(getError(), "#FA6675", 4)
+        RegexAndColor(getError(), "#FA6675", 4, "Error")
     };
 }
 
@@ -144,7 +146,6 @@ void createHtml(const string &source, const string &outFileName) {
                "<body bgcolor=\"#282923\">\n";
 
     for (auto &color: colors) {
-
         string word = source.substr(color.start, color.end - color.start + 1);
 
         if (word.find('>') != string::npos || word.find('<') != string::npos) {
@@ -160,6 +161,78 @@ void createHtml(const string &source, const string &outFileName) {
                "</html>";
 }
 
+void outputUniqueLexemes(const vector<ColoredWord> &coloredWords, const string &source) {
+    unordered_set<string> numericLiterals;
+    unordered_set<string> stringLiterals;
+    unordered_set<string> charLiterals;
+    unordered_set<string> comments;
+    unordered_set<string> keywords;
+    unordered_set<string> operators;
+    unordered_set<string> identifiers;
+    unordered_set<string> punctuation;
+    unordered_set<string> systemIO;
+    unordered_set<string> directives;
+    unordered_set<string> booleans;
+    unordered_set<string> dataTypes;
+
+    for (const auto &color : coloredWords) {
+        string lexeme = source.substr(color.start, color.end - color.start + 1);
+
+        // Перевірка на функції
+        if (regex_match(lexeme, regex(getReservedWords()))) {
+            keywords.insert(lexeme + " - Keyword");
+        } else if (regex_match(lexeme, regex(getTypeNames()))) {
+            dataTypes.insert(lexeme + " - Data Type");
+        } else if (regex_match(lexeme, regex(getSystemIO()))) {
+            systemIO.insert(lexeme + " - System I/O");
+        } else if (regex_match(lexeme, regex(getBoolean()))) {
+            booleans.insert(lexeme + " - Boolean");
+        } else if (regex_match(lexeme, regex(getVariable()))) {
+            identifiers.insert(lexeme + " - Identifier");
+        } else if (regex_match(lexeme, regex(getOperators()))) {
+            operators.insert(lexeme + " - Operator");
+        } else if (regex_match(lexeme, regex(getInt())) ||
+                   regex_match(lexeme, regex(getFloat())) ||
+                   regex_match(lexeme, regex(getHexNumbers())) ||
+                   regex_match(lexeme, regex(getBinaryNumbers())) ||
+                   regex_match(lexeme, regex(getOctalNumbers()))) {
+            numericLiterals.insert(lexeme + " - Numeric Literal");
+        } else if (regex_match(lexeme, regex(getString()))) {
+            stringLiterals.insert(lexeme + " - String Literal");
+        } else if (regex_match(lexeme, regex(getChar()))) {
+            charLiterals.insert(lexeme + " - Character Literal");
+        } else if (regex_match(lexeme, regex(getSingleLineComment())) ||
+                   regex_match(lexeme, regex(getMultilineComments()))) {
+            comments.insert(lexeme + " - Comment");
+        } else if (regex_match(lexeme, regex(getDelimiters()))) {
+            punctuation.insert(lexeme + " - Punctuation");
+        } else if (regex_match(lexeme, regex(getDirectives()))) {
+            directives.insert(lexeme + " - Directive");
+        }
+    }
+
+    auto printLexemeSet = [](const string &categoryName, const unordered_set<string> &lexemes) {
+        cout << categoryName << ":" << endl;
+        for (const auto &lexeme : lexemes) {
+            cout << lexeme << endl;
+        }
+        if (!lexemes.empty()) {
+            cout << "------------------" << endl;
+        }
+    };
+
+    printLexemeSet("Numeric Literals", numericLiterals);
+    printLexemeSet("String Literals", stringLiterals);
+    printLexemeSet("Character Literals", charLiterals);
+    printLexemeSet("Comments", comments);
+    printLexemeSet("Keywords", keywords);
+    printLexemeSet("Operators", operators);
+    printLexemeSet("Punctuation", punctuation);
+    printLexemeSet("Identifiers", identifiers);
+    printLexemeSet("Booleans", booleans);
+    printLexemeSet("Data Types", dataTypes);
+}
+
 int main() {
     SetConsoleOutputCP(CP_UTF8);
 
@@ -171,8 +244,11 @@ int main() {
     if(!sourceCode.empty()) {
         createHtml(sourceCode, outputFile);
         writeToConsole(sourceCode);
+
+        auto coloredWords = colorText(sourceCode);
+        cout << endl;
+        outputUniqueLexemes(coloredWords, sourceCode);
     }
 
     return 0;
 }
-

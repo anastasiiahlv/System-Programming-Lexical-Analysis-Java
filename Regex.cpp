@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include "Regex.h"
 using namespace std;
 
 string getInt() {
@@ -33,7 +35,7 @@ string getBoolean() {
 }
 
 string getDirectives() {
-    return R"(import\s+[\w\.]+|package\s+[\w\.]+)";
+    return R"(import\s+\w+|package\s+\w+)";
 }
 
 string getMultilineComments() {
@@ -61,7 +63,7 @@ string getMain() {
 }
 
 string getFunctionDefinition() {
-    return R"([A-Za-z_][A-Za-z_0-9]*(?=\((.*)\)))";
+    return R"([A-Za-z_][A-Za-z_0-9]*\s*\(([^()]*)\)\s*\{?)";
 }
 
 string getDelimiters() {
@@ -73,7 +75,7 @@ string getOperators() {
 }
 
 string getLinesAndSpaces() {
-    return R"([ \t\n\r]+)";
+    return R"([\t\n\r]+)";
 }
 
 string getSystemIO() {

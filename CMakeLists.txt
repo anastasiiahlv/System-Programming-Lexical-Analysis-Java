@@ -3,4 +3,5 @@ project(Lab3_Java_Lexical_Analysis)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Lab3_Java_Lexical_Analysis main.cpp Regex.cpp)
+add_executable(Lab3_Java_Lexical_Analysis main.cpp Regex.cpp
+        Regex.h)
