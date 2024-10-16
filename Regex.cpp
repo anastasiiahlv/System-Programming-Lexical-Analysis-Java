@@ -34,10 +34,6 @@ string getBoolean() {
     return R"(\b(false|true)\b)";
 }
 
-string getDirectives() {
-    return R"(import\s+\w+|package\s+\w+)";
-}
-
 string getMultilineComments() {
     return R"(\/\*(.|\r|\n)*\*\/)";
 }
@@ -51,19 +47,15 @@ string getVariable() {
 }
 
 string getTypeNames() {
-    return R"(\b(byte|short|int|long|float|double|char|boolean|void|Object|String)\b)";
+    return R"(\b(byte|short|int|long|float|double|char|boolean|void|[A-Z][a-zA-Z0-9]*)\b)";
 }
 
 string getReservedWords() {
-    return R"(\b(abstract|assert|break|case|catch|class|const|continue|default|do|else|enum|extends|final|finally|for|if|implements|import|instanceof|interface|new|null|package|private|protected|public|return|static|super|switch|synchronized|this|throw|throws|try|volatile|while)\b)";
-}
-
-string getMain() {
-    return R"(\b(main)\b(?=\(\)))";
+    return R"(\b(abstract|assert|break|case|class|const|continue|default|do|else|enum|extends|final|finally|for|if|implements|import|instanceof|interface|new|null|package|private|protected|public|return|static|super|switch|synchronized|this|throw|throws|try|volatile|while)\b)";
 }
 
 string getFunctionDefinition() {
-    return R"([A-Za-z_][A-Za-z_0-9]*\s*\(([^()]*)\)\s*\{?)";
+    return R"(\b[A-Za-z_][A-Za-z0-9_]*\s*\(([^()]*)\)\s*(\{)?)";
 }
 
 string getDelimiters() {
@@ -85,5 +77,3 @@ string getSystemIO() {
 string getError() {
     return R"(.*)";
 }
-
-

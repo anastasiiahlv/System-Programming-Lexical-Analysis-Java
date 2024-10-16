@@ -118,7 +118,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "cmake-build-debug/Regex.h",
+			"path" : "Regex.h",
 			"sourceGroupIndex" : 1
 		}
 	],

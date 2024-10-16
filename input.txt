@@ -5,7 +5,7 @@ Multiline
 comment
 */
 
-// Single line comment
+@@@
 
 class Main {
     public static void main(String[] args) {
@@ -44,8 +44,7 @@ class Main {
          String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
 
          // switch
-         int day = 4;
-         switch (day) {
+         switch(4) {
               case 6:
                     System.out.println("Today is Saturday");
                     break;
@@ -55,10 +54,5 @@ class Main {
               default:
                      System.out.println("Looking forward to the Weekend");
               }
-
-         // for loop
-         for (int i = 0; i < 5; i++) {
-             System.out.println(i);
-         }
     }
 }
