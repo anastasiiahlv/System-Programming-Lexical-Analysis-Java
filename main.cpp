@@ -13,11 +13,13 @@ public:
     regex lexemeRegex;
     string hexColor;
     WORD ansiColor;
+    string lexemeName;
 
-    RegexAndColor(const string &regexTemplate, const string &hexColor, WORD ansiColor) {
+    RegexAndColor(const string &regexTemplate, const string &hexColor, WORD ansiColor, string lexemeName) {
         this->lexemeRegex = regex(regexTemplate);
         this->hexColor = hexColor;
         this->ansiColor = ansiColor;
+        this->lexemeName = lexemeName;
     }
 };
 
@@ -29,32 +31,33 @@ struct ColoredWord {
 
 vector<RegexAndColor> getRegex() {
     return vector<RegexAndColor> {
-        RegexAndColor(getString(), "#6AAB73", 2),
-        RegexAndColor(getChar(), "#6AAB73", 2),
+        RegexAndColor(getString(), "#6AAB73", 2, "String"),
+        RegexAndColor(getChar(), "#6AAB73", 2, "Char"),
 
-        RegexAndColor(getInt(), "#2AACB8", 11),
-        RegexAndColor(getFloat(), "#2AACB8", 11),
-        RegexAndColor(getHexNumbers(), "#2AACB8", 11),
-        RegexAndColor(getBinaryNumbers(), "#2AACB8", 11),
-        RegexAndColor(getOctalNumbers(), "#2AACB8", 11),
+        RegexAndColor(getInt(), "#2AACB8", 11, "Int"),
+        RegexAndColor(getFloat(), "#2AACB8", 11, "Float"),
+        RegexAndColor(getHexNumbers(), "#2AACB8", 11, "Hex Number"),
 
-        RegexAndColor(getMultilineComments(), "#7A7E85", 8),
-        RegexAndColor(getSingleLineComment(), "#7A7E85", 8),
+        RegexAndColor(getBinaryNumbers(), "#2AACB8", 11, "Binary Number"),
+        RegexAndColor(getOctalNumbers(), "#2AACB8", 11, "Octal Number"),
 
-        RegexAndColor(getTypeNames(), "#CF8E6D", 6),
-        RegexAndColor(getReservedWords(), "#B3AE60", 14),
-        RegexAndColor(getOperators(), "#BCBEC4", 15),
-        RegexAndColor(getDelimiters(), "#BCBEC4", 15),
+        RegexAndColor(getMultilineComments(), "#7A7E85", 8, "Multiline Comment"),
+        RegexAndColor(getSingleLineComment(), "#7A7E85", 8, "Single Line Comment"),
 
-        RegexAndColor(getBoolean(), "#B3AE60", 14),
+        RegexAndColor(getTypeNames(), "#CF8E6D", 6, "Data Type"),
+        RegexAndColor(getReservedWords(), "#B3AE60", 14, "Reserved Word"),
+        RegexAndColor(getOperators(), "#BCBEC4", 15, "Operator"),
+        RegexAndColor(getDelimiters(), "#BCBEC4", 15, "Delimiters"),
 
-        RegexAndColor(getSystemIO(), "#C77DBB", 5),
-        RegexAndColor(getFunctionDefinition(), "#56A8F5", 3),
-        RegexAndColor(getVariable(), "#cfd3d4", 9),
+        RegexAndColor(getBoolean(), "#B3AE60", 14, "Boolean"),
 
-        RegexAndColor(getLinesAndSpaces(), "#BCBEC4", 15),
+        RegexAndColor(getSystemIO(), "#C77DBB", 5, "System.out/in"),
+        RegexAndColor(getFunctionDefinition(), "#56A8F5", 3, "Function Definition"),
+        RegexAndColor(getVariable(), "#cfd3d4", 9, "Variable"),
 
-        RegexAndColor(getError(), "#FA6675", 4)
+        RegexAndColor(getLinesAndSpaces(), "#BCBEC4", 15, "Lines and Spaces"),
+
+        RegexAndColor(getError(), "#FA6675", 4, "Error")
     };
 }
 
@@ -156,8 +159,24 @@ void createHtml(const string &source, const string &outFileName) {
                "</html>";
 }
 
+void displayLexemeColors() {
+    auto patterns = getRegex();
+
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    for (auto& pattern : patterns) {
+        SetConsoleTextAttribute(hConsole, pattern.ansiColor);
+        cout << "Lexeme type: " << pattern.lexemeName << " — Color: " << pattern.hexColor << endl;
+    }
+
+    SetConsoleTextAttribute(hConsole, 7);
+}
+
 int main() {
     SetConsoleOutputCP(CP_UTF8);
+
+    displayLexemeColors();
+    cout << "\n\nResult: " << endl;
 
     string inputFile = R"(input.txt)";
     string outputFile = R"(output.html)";

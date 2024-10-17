@@ -16,7 +16,7 @@ class Main {
         long longNum = 123456789L;
 
          // Числа з плаваючою крапкою
-        float floatNum = 3.14f;
+        float floatNum = 3.14g;
         double doubleNum = 2.718281828459045d;
 
          // Шістнадцяткові числа
